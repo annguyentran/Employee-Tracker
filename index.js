@@ -211,6 +211,7 @@ const addRoles = async () => {
   console.log("Added role: " + userInput.role_name)
   menu();
 }
+
 const menu = () => {
   inquirer.prompt(
     [{
@@ -218,7 +219,7 @@ const menu = () => {
       message: "What would you like to do?",
       name: 'firstMenu',
       choices: ["VIEW ALL EMPLOYEES", "ADD EMPLOYEE", "UPDATE EMPLOYEE ROLE", "VIEW ALL ROLES",
-        "ADD ROLE", "VIEW ALL DEPARTMENTS", "ADD DEPARTMENT"]
+        "ADD ROLE", "VIEW ALL DEPARTMENTS", "ADD DEPARTMENT", "QUIT"]
     }]
   ).then((menuChoice) => {
     switch (menuChoice.firstMenu) {
@@ -252,35 +253,14 @@ const menu = () => {
         addDepartments();
         break;
       }
+      case "QUIT": {
+        console.log("Goodbye!");
+        process.exit()
+        break;
+      }
     }
     console.log(menuChoice.firstMenu)
   });
 
 }
-// const db = mysql.createConnection(
-//     {
-//       host: 'localhost',
-//       // MySQL username,
-//       user: 'root',
-//       // MySQL password
-//       password: process.env.DB_PASSWORD,
-//       database: 'company_db'
-//     },
-//     console.log(`Connected to the classlist_db database.`)
-//   );
-//   db.promise().query("SELECT * FROM departments").then(([res]) => console.log(res))
-
-
-const start = () => {
   menu()
-
-}
-
-start()
-  // function(para1) {
-
-
-  // }
-  // (para1, para2)=>{
-
-  // }
